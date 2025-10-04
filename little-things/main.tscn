@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgbreeo0hc82y"]
+
+[ext_resource type="PackedScene" uid="uid://mf43d54o4b2i" path="res://Player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://jc73deeiodk3" path="res://env.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://mwf3e0g4gs8j" path="res://Text.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dp8ffbyfxikle" path="res://Text_location.tscn" id="3_h2yge"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(1000, -17.905)
+scale = Vector2(0.3, 0.3)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(3.3333333, 3.3333333)
+
+[node name="Control" type="Control" parent="Player/Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -576.0
+offset_top = -322.095
+offset_right = 576.0
+offset_bottom = 324.905
+
+[node name="txt" parent="Player/Camera2D/Control" instance=ExtResource("2_1bvp3")]
+visible = false
+z_index = 10
+layout_mode = 1
+
+[node name="Env" parent="." instance=ExtResource("2_0xm2m")]
+
+[node name="Text_area_0" parent="Env" instance=ExtResource("3_h2yge")]
+position = Vector2(2282, -74)
+
+[node name="Area" parent="Env/Text_area_0" index="0"]
+position = Vector2(32, -34.5)
+
+[node name="Press_E" parent="Env/Text_area_0/Area" index="0"]
+visible = false
+offset_left = -14.0
+offset_top = -102.5
+offset_right = 21.0
+offset_bottom = -65.0
+
+[connection signal="body_entered" from="Env/Text_area_0" to="Env/Text_area_0" method="set_num" binds= [0]]
+
+[editable path="Env/Text_area_0"]

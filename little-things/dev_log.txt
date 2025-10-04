@@ -1,0 +1,14 @@
+10/2/2025
+The Little Things will be a side scroller slice of life game where you play as the reincarnation of a wish
+To regain your strength, you must make people more satifised and happy
+But because you are so weak, you can only do little things
+
+Today I finished the player sprite though I plan on improving it, and I gave it some "animation" and movement
+And a small map for testing
+
+10/3/2025
+Created the first mission
+There is now text, areas to get text
+Things to do:
+	Organization - when calling nodes with $, create a variable for it and replace all of the $ with that corresponding variable so it is easier to change node names
+	Work on the missions

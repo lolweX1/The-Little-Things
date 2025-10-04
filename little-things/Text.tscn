@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://mwf3e0g4gs8j"]
+
+[ext_resource type="Script" uid="uid://dx3jnatmqpjln" path="res://textBox.gd" id="1_ik6dx"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ik6dx")
+
+[node name="Border" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.012
+anchor_top = 0.597
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.824
+offset_top = 0.14401245
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Text_area" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.637
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -16.776001
+offset_right = -9.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.2118912, 0.41420117, 0.21067154, 1)
+
+[node name="Text" type="Label" parent="Text_area"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Enter" type="Label" parent="Text_area"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1046.0
+offset_top = 219.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press Enter"
