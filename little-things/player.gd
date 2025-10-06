@@ -4,7 +4,7 @@ extends CharacterBody2D
 const MAX_VELOCITY = 500
 const ACCEL = 50
 
-var force = 75
+var force = 100
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
@@ -31,9 +31,11 @@ func _physics_process(delta: float) -> void:
 	obj_collision()
 	
 	if (Input.is_action_just_pressed("begin_dialogue")):
-		if (tasks.over_text):
+		if (tasks.over_text && !$Camera2D/Control/txt.visible):
 			$Camera2D/Control/txt.visible = true
 			await $Camera2D/Control/txt.write_text()
+			if (tasks.get_mission_complete()):
+				tasks.set_dialogue_mission_complete()
 			$Camera2D/Control/txt.visible = false
 	move_and_slide()
 	

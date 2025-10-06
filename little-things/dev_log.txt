@@ -12,3 +12,24 @@ There is now text, areas to get text
 Things to do:
 	Organization - when calling nodes with $, create a variable for it and replace all of the $ with that corresponding variable so it is easier to change node names
 	Work on the missions
+
+10/4/2025
+There is now mission complete dialogue and a punishment dialogue
+Rewards aren't in place yet bc character variables aren't fully defined yet. Working on it
+Plans:
+	levels:
+		At level 5, polymorph is available
+		At level 10, hope is available (creates a burst of light)
+	xp
+	strength
+	light
+	
+10/5/2025
+Player UI now exists
+wish and wishpower has been made
+Fixed issue with dialogue when pressing E multiple times
+Issues: weird lamp movement sometimes, also not very smooth
+	
+10/6/2025
+There is now a gate
+Issues: something wrong with text sometimes not sure
