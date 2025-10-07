@@ -1,0 +1,1 @@
+instances of characters, text_area are typically make local and setting the material, sprites, etc to make unique

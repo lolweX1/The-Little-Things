@@ -1,13 +1,13 @@
 extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
-	if (body.name == "Player"):
+	if (body is CharacterBody2D):
 		$Area/Press_E.visible = true
 		tasks.set_over_text(true)
 
 
 func _on_body_exited(body: Node2D) -> void:
-	if (body.name == "Player"):
+	if (body is CharacterBody2D):
 		$Area/Press_E.visible = false
 		tasks.set_over_text(false)
 

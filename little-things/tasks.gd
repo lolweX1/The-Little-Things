@@ -40,6 +40,13 @@ const tasks = {
 		"I have to pay for my sins",
 		"What do I need? I don't need anything",
 		"I wish you best of luck"]
+	],
+	"3": [
+		[], [
+			"Wow you got me? That's unexpected",
+			"Have a reward",
+			"Press Q to go back into spectral form"
+			]
 	]
 }
 var task_completion = {
@@ -47,7 +54,8 @@ var task_completion = {
 	"1": [
 		false, [25, 2], false, false # format is [completed, [wish, willpower], player_talked_to_mission_npc, reward granted]
 	],
-	"2": [true, [70, 0], false, false] # when only dialogue is needed, you can set completed to true
+	"2": [true, [70, 0], false, false], # when only dialogue is needed, you can set completed to true
+	"3": [true, [50, 10], true, false]
 }
 
 func get_task_dialogue() -> Array:
@@ -84,5 +92,5 @@ func set_dialogue_mission_complete() -> void:
 		task_completion[str(task_number)][2] = true
 		if (task_completion[str(task_number)][0] && !task_completion[str(task_number)][3]):
 			task_completion[str(task_number)][3] = true
-			root.get_node("Main/Player/Camera2D/Control/UI").wish += task_completion[str(task_number)][1][0]
-			root.get_node("Main/Player/Camera2D/Control/UI").willpower += task_completion[str(task_number)][1][1]
+			player_stats.wish += task_completion[str(task_number)][1][0]
+			player_stats.willpower += task_completion[str(task_number)][1][1]

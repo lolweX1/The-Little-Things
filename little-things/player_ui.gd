@@ -9,54 +9,26 @@ extends Control
 @onready var level_lb = $level
 @onready var player = tasks.root.get_node("Main/Player")
 
-# level
-var level = 0
-var old_level = 0
-
-# willpower
-var willpower = 0
-
-# wish
-var wish_max = [ # wish_max formula is: 100 + (fibonacchi number) * 10
-	100,
-	110,
-	110,
-	120,
-	130,
-	150,
-	180,
-	230,
-	310,
-	440
-]
-var wish = 0.0
-var old_wish = 0;
-
-# wish bar
-var min_wish_size = 3
-var max_wish_size
-var wish_size = 3
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var panel_stylebox = wish_bar.get_theme_stylebox("panel")
-	max_wish_size = wish_bar.size.x - panel_stylebox.get_margin(SIDE_LEFT) * 2;
+	player_stats.max_wish_size = wish_bar.size.x - panel_stylebox.get_margin(SIDE_LEFT) * 2;
 	
-	wish_prog_txt.text = str(wish) + "/" + str(wish_max[level])
+	wish_prog_txt.text = str(player_stats.wish) + "/" + str(player_stats.wish_max[player_stats.level])
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if (wish != old_wish):
-		wish_size = clamp(max_wish_size * (wish/wish_max[level]), 3, max_wish_size)
-		wish_prog.size.x = wish_size
-		old_wish = wish
+	if (player_stats.wish != player_stats.old_wish):
+		player_stats.wish_size = clamp(player_stats.max_wish_size * (player_stats.wish/player_stats.wish_max[player_stats.level]), 3, player_stats.max_wish_size)
+		wish_prog.size.x = player_stats.wish_size
+		player_stats.old_wish = player_stats.wish
 		
-		if (wish > wish_max[level]):
-			wish = 0
-			level += 1
+		if (player_stats.wish > player_stats.wish_max[player_stats.level]):
+			player_stats.wish = 0
+			player_stats.level += 1
 		
-		wish_prog_txt.text = str(wish) + "/" + str(wish_max[level])
-	if (level != old_level):
-		old_level = level
-		level_lb.text = "level " + str(level)
+		wish_prog_txt.text = str(player_stats.wish) + "/" + str(player_stats.wish_max[player_stats.level])
+	if (player_stats.level != player_stats.old_level):
+		player_stats.old_level = player_stats.level
+		level_lb.text = "player_stats.level " + str(player_stats.level)

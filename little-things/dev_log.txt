@@ -36,3 +36,12 @@ Issues: something wrong with text sometimes not sure
 Plans: allow the user to control different objects and make the user unable to escape to go into their spectral form until they get a specific item (they can still switch between different objects)
 
 PLEASE DO THIS LATER ON: CHANGE SPRITES AND BACKGROUND TO SOMETHING THAT LOOKS BETTER AND MATCHES
+ALSO PLEASE FIND A WAY TO FAST FORWARD DIALOGUE
+
+10/7/2025 (Noon)
+Finally figured out how to highlight characterBody2Ds that are within the player
+The player can start controlling other characterBody2Ds when they reach level 1
+Trying to figure out the outline sucked, I copied Vector code and stuff and added a outline_enabled variable
+There is a trophy now as well
+
+REFORMAT CODE TO MAKE IT CLEANER AND MORE EFFICIENT

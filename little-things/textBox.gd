@@ -17,7 +17,7 @@ func write_text() -> bool:
 		$Text_area/Enter.visible = false
 		for i in text:
 			$Text_area/Text.text += i
-			await get_tree().create_timer(0.05).timeout
+			await get_tree().create_timer(0.02).timeout
 		$Text_area/Enter.visible = true
 		await wait_for_enter()
 	return true
