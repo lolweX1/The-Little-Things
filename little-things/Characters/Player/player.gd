@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 				tasks.set_dialogue_mission_complete()
 			$Camera2D/Control/txt.visible = false
 	
-	if (player_stats.level) >= 0: # change to 1
+	if (player_stats.level) >= 1: # change to 1
 		var charaBody = get_closest_to_player()
 		if (charaBody):
 			charaBody.setHighlight()

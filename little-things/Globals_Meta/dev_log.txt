@@ -45,3 +45,5 @@ Trying to figure out the outline sucked, I copied Vector code and stuff and adde
 There is a trophy now as well
 
 REFORMAT CODE TO MAKE IT CLEANER AND MORE EFFICIENT
+ALSO ADD A MENU WITH PLAY, SETTINGS, CREDITS, AND CONTROLS
+PROBABLY ALSO CREATE A TUTORIAL
