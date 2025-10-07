@@ -33,3 +33,6 @@ Issues: weird lamp movement sometimes, also not very smooth
 10/6/2025
 There is now a gate
 Issues: something wrong with text sometimes not sure
+Plans: allow the user to control different objects and make the user unable to escape to go into their spectral form until they get a specific item (they can still switch between different objects)
+
+PLEASE DO THIS LATER ON: CHANGE SPRITES AND BACKGROUND TO SOMETHING THAT LOOKS BETTER AND MATCHES

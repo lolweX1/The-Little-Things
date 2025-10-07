@@ -4,15 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://jc73deeiodk3" path="res://env.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://mwf3e0g4gs8j" path="res://Text.tscn" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://codofl4npnbbi" path="res://player_ui.tscn" id="3_7mycd"]
-[ext_resource type="PackedScene" uid="uid://dp8ffbyfxikle" path="res://Text_location.tscn" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://c702e1ve4cc3o" path="res://completion_area_0.gd" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://hxo2m4brerp7" path="res://gate.png" id="7_272bh"]
 [ext_resource type="Script" uid="uid://dukv55y31oxos" path="res://task_location.gd" id="8_5vw27"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3knj8"]
+size = Vector2(326, 235.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(582, 250)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3knj8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
 resource_local_to_scene = true
 size = Vector2(142, 170)
 
@@ -44,18 +46,34 @@ layout_mode = 1
 
 [node name="Env" parent="." instance=ExtResource("2_0xm2m")]
 
-[node name="Text_area_0" parent="Env" instance=ExtResource("3_h2yge")]
+[node name="Text_area_0" type="Area2D" parent="Env"]
 position = Vector2(2282, -74)
+script = ExtResource("8_5vw27")
 
-[node name="Area" parent="Env/Text_area_0" index="0"]
+[node name="Area" type="CollisionShape2D" parent="Env/Text_area_0"]
 position = Vector2(24.5, -35.5)
+shape = SubResource("RectangleShape2D_3knj8")
 
-[node name="Press_E" parent="Env/Text_area_0/Area" index="0"]
+[node name="Press_E" type="ColorRect" parent="Env/Text_area_0/Area"]
 visible = false
 offset_left = -14.0
 offset_top = -102.5
 offset_right = 21.0
 offset_bottom = -65.0
+color = Color(0.29210714, 0.000585655, 0.7674996, 1)
+
+[node name="Label" type="Label" parent="Env/Text_area_0/Area/Press_E"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.5
+offset_bottom = 1.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Completion_area_0" type="Area2D" parent="Env"]
 script = ExtResource("5_lquwl")
@@ -63,6 +81,35 @@ script = ExtResource("5_lquwl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Completion_area_0"]
 position = Vector2(2311, -107)
 shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Text_area_2" type="Area2D" parent="Env"]
+position = Vector2(7065, 341)
+script = ExtResource("8_5vw27")
+
+[node name="Area" type="CollisionShape2D" parent="Env/Text_area_2"]
+position = Vector2(24.5, -35.5)
+shape = SubResource("RectangleShape2D_3knj8")
+
+[node name="Press_E" type="ColorRect" parent="Env/Text_area_2/Area"]
+visible = false
+offset_left = -14.0
+offset_top = -102.5
+offset_right = 21.0
+offset_bottom = -65.0
+color = Color(0.29210714, 0.000585655, 0.7674996, 1)
+
+[node name="Label" type="Label" parent="Env/Text_area_2/Area/Press_E"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.5
+offset_bottom = 1.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Darkness" type="CanvasModulate" parent="."]
 color = Color(0.48962224, 0.48962224, 0.48962218, 1)
@@ -79,7 +126,7 @@ script = ExtResource("8_5vw27")
 
 [node name="Area" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-6, -5)
-shape = SubResource("RectangleShape2D_3knj8")
+shape = SubResource("RectangleShape2D_272bh")
 
 [node name="Press_E" type="ColorRect" parent="Area2D/Area"]
 offset_left = -4.0
@@ -101,11 +148,14 @@ text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="body_entered" from="Env/Text_area_0" to="Env/Text_area_0" method="_on_body_entered"]
 [connection signal="body_entered" from="Env/Text_area_0" to="Env/Text_area_0" method="set_num" binds= [1]]
+[connection signal="body_exited" from="Env/Text_area_0" to="Env/Text_area_0" method="_on_body_exited"]
 [connection signal="body_entered" from="Env/Completion_area_0" to="Env/Completion_area_0" method="_on_body_entered"]
 [connection signal="body_exited" from="Env/Completion_area_0" to="Env/Completion_area_0" method="_on_body_exited"]
+[connection signal="body_entered" from="Env/Text_area_2" to="Env/Text_area_2" method="_on_body_entered"]
+[connection signal="body_entered" from="Env/Text_area_2" to="Env/Text_area_2" method="set_num" binds= [2]]
+[connection signal="body_exited" from="Env/Text_area_2" to="Env/Text_area_2" method="_on_body_exited"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="set_num" binds= [0]]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
-
-[editable path="Env/Text_area_0"]

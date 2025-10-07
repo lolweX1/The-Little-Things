@@ -13,6 +13,9 @@ const tasks = {
 			"what's this? It looks broken?",
 			"There's some small text here...",
 			"It says [needs more light]"
+		], [
+			"Would you like to enter the realm of the spirits?",
+			"If you do so, there is no return"
 		]
 	],
 	"1": [
@@ -29,13 +32,22 @@ const tasks = {
 			"I suppose it is time for you to go now",
 			"May you have a safe and wonderful journey little one"
 		]
+	],
+	"2": [
+		[], ["Oh hello there little one,",
+		"What are you doing here in this cave?",
+		"What am I doing here?",
+		"I have to pay for my sins",
+		"What do I need? I don't need anything",
+		"I wish you best of luck"]
 	]
 }
 var task_completion = {
 	"0": [false, [0, 0], false, false],
 	"1": [
-		false, [5, 2], false, false # format is [completed, [wish, willpower], player_talked_to_mission_npc, reward granted]
-	]
+		false, [25, 2], false, false # format is [completed, [wish, willpower], player_talked_to_mission_npc, reward granted]
+	],
+	"2": [true, [70, 0], false, false] # when only dialogue is needed, you can set completed to true
 }
 
 func get_task_dialogue() -> Array:
