@@ -13,12 +13,12 @@ config_version=5
 config/name="little_things"
 run/main_scene="uid://bgbreeo0hc82y"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Sprites/icon.svg"
 
 [autoload]
 
-tasks="*res://tasks.gd"
-player_stats="*res://player_stats.gd"
+tasks="*res://Globals_Meta/tasks.gd"
+player_stats="*res://Globals_Meta/player_stats.gd"
 
 [input]
 
