@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc4fcfbcf6i54"]
+
+[ext_resource type="Texture2D" uid="uid://ori3j1vitda7" path="res://Enviornment/Background/Free DEMO Pixel Skies Background pack by Digital Moons/Pixel Skies 1920x1080px (Full HD)/demo04_PixelSky_1920x1080.png" id="1_twaw1"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Skies_Night" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1152, 648)
+autoscroll = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Skies_Night"]
+z_index = -14
+position = Vector2(576, 323.99997)
+scale = Vector2(0.6, 0.59999996)
+texture = ExtResource("1_twaw1")

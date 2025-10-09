@@ -42,9 +42,10 @@ func _physics_process(delta: float) -> void:
 	if (Input.is_action_just_pressed("begin_dialogue")):
 		if (tasks.over_text && !$Camera2D/Control/txt.visible):
 			$Camera2D/Control/txt.visible = true
-			await $Camera2D/Control/txt.write_text()
-			if (tasks.get_mission_complete()):
+			if (tasks.get_mission_complete() && tasks.is_communicated()):
 				tasks.set_dialogue_mission_complete()
+			await $Camera2D/Control/txt.write_text()
+			tasks.did_communicate()
 			$Camera2D/Control/txt.visible = false
 	
 	if (player_stats.level) >= 1: # change to 1

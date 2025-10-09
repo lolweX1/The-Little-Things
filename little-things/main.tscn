@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://bgbreeo0hc82y"]
+[gd_scene load_steps=17 format=3 uid="uid://bgbreeo0hc82y"]
 
+[ext_resource type="PackedScene" uid="uid://bc4fcfbcf6i54" path="res://Enviornment/Background/Background.tscn" id="1_efxa6"]
 [ext_resource type="PackedScene" uid="uid://mf43d54o4b2i" path="res://Characters/Player/Player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://jc73deeiodk3" path="res://Enviornment/env.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://mwf3e0g4gs8j" path="res://UI/Text.tscn" id="2_1bvp3"]
@@ -34,6 +35,8 @@ shader_parameter/add_margins = true
 shader_parameter/outline_enabled = false
 
 [node name="Main" type="Node2D"]
+
+[node name="Bg" parent="." instance=ExtResource("1_efxa6")]
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(1000, -17.905)

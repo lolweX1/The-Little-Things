@@ -47,3 +47,7 @@ There is a trophy now as well
 REFORMAT CODE TO MAKE IT CLEANER AND MORE EFFICIENT
 ALSO ADD A MENU WITH PLAY, SETTINGS, CREDITS, AND CONTROLS
 PROBABLY ALSO CREATE A TUTORIAL
+
+10/8/2025
+Added background
+Debug: you can now level up, rewards only granted after you talk to them

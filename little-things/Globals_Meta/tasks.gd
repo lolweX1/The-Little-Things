@@ -34,7 +34,13 @@ const tasks = {
 		]
 	],
 	"2": [
-		[], ["Oh hello there little one,",
+		["Oh hello there little one,",
+		"What are you doing here in this cave?",
+		"What am I doing here?",
+		"I have to pay for my sins",
+		"What do I need? I don't need anything",
+		"I wish you best of luck"], 
+		["Oh hello there little one,",
 		"What are you doing here in this cave?",
 		"What am I doing here?",
 		"I have to pay for my sins",
@@ -42,20 +48,25 @@ const tasks = {
 		"I wish you best of luck"]
 	],
 	"3": [
-		[], [
+		[
 			"Wow you got me? That's unexpected",
 			"Have a reward",
 			"Press Q to go back into spectral form"
-			]
+		],
+		[
+			"Wow you got me? That's unexpected",
+			"Have a reward",
+			"Press Q to go back into spectral form"
+		]
 	]
 }
 var task_completion = {
-	"0": [false, [0, 0], false, false],
+	"0": [false, [0, 0], false, false, false],
 	"1": [
-		false, [25, 2], false, false # format is [completed, [wish, willpower], player_talked_to_mission_npc, reward granted]
+		false, [25, 2], false, false, false # format is [completed, [wish, willpower], player_talked_to_mission_npc, reward granted, gave_quest_req_to_player]
 	],
-	"2": [true, [70, 0], false, false], # when only dialogue is needed, you can set completed to true
-	"3": [true, [50, 10], true, false]
+	"2": [true, [75, 0], false, false, true], # when only dialogue is needed, you can set completed and gave_quest_req_to_player to true
+	"3": [true, [50, 10], true, false,true]
 }
 
 func get_task_dialogue() -> Array:
@@ -71,6 +82,11 @@ func set_task_number(num) -> void:
 
 func set_over_text(yes) -> void:
 	over_text = yes
+
+func is_communicated() -> bool:
+	return task_completion[str(task_number)][4];
+func did_communicate():
+	task_completion[str(task_number)][4] = true
 
 func get_mission_complete() -> bool:
 	if (task_completion[str(task_number)].size() > 0):
@@ -94,3 +110,8 @@ func set_dialogue_mission_complete() -> void:
 			task_completion[str(task_number)][3] = true
 			player_stats.wish += task_completion[str(task_number)][1][0]
 			player_stats.willpower += task_completion[str(task_number)][1][1]
+		# detect if level up
+		if (player_stats.wish >= player_stats.wish_max[player_stats.level]):
+			player_stats.wish -= player_stats.wish_max[player_stats.level]
+			player_stats.level += 1
+			

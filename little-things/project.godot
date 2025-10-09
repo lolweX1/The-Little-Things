@@ -20,6 +20,10 @@ config/icon="res://Sprites/icon.svg"
 tasks="*res://Globals_Meta/tasks.gd"
 player_stats="*res://Globals_Meta/player_stats.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 move_up={
