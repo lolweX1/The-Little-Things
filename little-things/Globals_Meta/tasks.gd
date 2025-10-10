@@ -58,6 +58,12 @@ const tasks = {
 			"Have a reward",
 			"Press Q to go back into spectral form"
 		]
+	],
+	"4":[ [
+		"Oh hey, I was building a wall but a piece slid out and I can't reach it",
+		"It's bothering me quite a bit, could you push it in?"
+	],
+		["Thanks"]
 	]
 }
 var task_completion = {
@@ -66,7 +72,8 @@ var task_completion = {
 		false, [25, 2], false, false, false # format is [completed, [wish, willpower], player_talked_to_mission_npc, reward granted, gave_quest_req_to_player]
 	],
 	"2": [true, [75, 0], false, false, true], # when only dialogue is needed, you can set completed and gave_quest_req_to_player to true
-	"3": [true, [50, 10], true, false,true]
+	"3": [true, [50, 10], true, false,true],
+	"4": [false, [50, 10], false, false, false]
 }
 
 func get_task_dialogue() -> Array:

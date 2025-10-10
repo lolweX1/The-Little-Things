@@ -51,3 +51,11 @@ PROBABLY ALSO CREATE A TUTORIAL
 10/8/2025
 Added background
 Debug: you can now level up, rewards only granted after you talk to them
+
+10/9/2025
+There is now a new mission: pushing a wall, doeesn't work just yet
+
+10/10/2025
+The new mission works
+
+PLAN: work on a title screen, instructions, and credits

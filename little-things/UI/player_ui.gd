@@ -31,4 +31,4 @@ func _process(delta: float) -> void:
 		wish_prog_txt.text = str(player_stats.wish) + "/" + str(player_stats.wish_max[player_stats.level])
 	if (player_stats.level != player_stats.old_level):
 		player_stats.old_level = player_stats.level
-		level_lb.text = "player_stats.level " + str(player_stats.level)
+		level_lb.text = "level " + str(player_stats.level)

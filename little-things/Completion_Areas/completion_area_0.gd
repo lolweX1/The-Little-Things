@@ -14,7 +14,8 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if (body.name == "lamp"):
 		tasks.task_completion["1"][0] = true
-
+	if (body.name == "missing wall"):
+		tasks.task_completion["4"][0] = true
 
 func _on_body_exited(body: Node2D) -> void:
 	if (tasks.get_spec_mission_complete(1) && tasks.get_mission_spec_dialogue_complete(1) && body.name == "lamp"):

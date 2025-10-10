@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bgbreeo0hc82y"]
+[gd_scene load_steps=27 format=3 uid="uid://bgbreeo0hc82y"]
 
 [ext_resource type="PackedScene" uid="uid://bc4fcfbcf6i54" path="res://Enviornment/Background/Background.tscn" id="1_efxa6"]
 [ext_resource type="PackedScene" uid="uid://mf43d54o4b2i" path="res://Characters/Player/Player.tscn" id="1_ig7tw"]
@@ -10,17 +10,34 @@
 [ext_resource type="Script" uid="uid://cfgb218gun4u8" path="res://Characters/Box/box_chara.gd" id="8_4c57u"]
 [ext_resource type="Script" uid="uid://dukv55y31oxos" path="res://Templates/task_location.gd" id="8_5vw27"]
 [ext_resource type="Shader" uid="uid://cstnjbnjb5twe" path="res://Characters/Box/box_chara.gdshader" id="9_efxa6"]
+[ext_resource type="Texture2D" uid="uid://001mclx4k3ks" path="res://Sprites/oak_woods_v1.0/oak_woods_v1.0/character/char_blue.png" id="9_vivmo"]
 [ext_resource type="Texture2D" uid="uid://blve4wg60grla" path="res://Sprites/leBox.png" id="10_dg77c"]
+[ext_resource type="Shader" uid="uid://bdwf3ncxn0w6b" path="res://Characters/WallPusher/main.gdshader" id="12_w48qg"]
+[ext_resource type="Script" uid="uid://cptiq331dyk8g" path="res://wall_pusher.gd" id="12_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://culodq67sh4g6" path="res://Sprites/pusher.png" id="13_w48qg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3knj8"]
 size = Vector2(326, 235.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+resource_local_to_scene = true
 size = Vector2(582, 250)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
 resource_local_to_scene = true
 size = Vector2(253, 111)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w48qg"]
+resource_local_to_scene = true
+size = Vector2(17, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yaehf"]
+resource_local_to_scene = true
+size = Vector2(160, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cqfq"]
+atlas = ExtResource("9_vivmo")
+region = Rect2(390, 314.5, 50, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ni6xp"]
 size = Vector2(18, 18)
@@ -33,6 +50,21 @@ shader_parameter/pattern = 0
 shader_parameter/inside = false
 shader_parameter/add_margins = true
 shader_parameter/outline_enabled = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w48qg"]
+shader = ExtResource("12_w48qg")
+shader_parameter/color = Color(1, 0, 0, 1)
+shader_parameter/width = 4.00000019
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/outline_enabled = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vivmo"]
+size = Vector2(16, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cqfq"]
+size = Vector2(65, 6)
 
 [node name="Main" type="Node2D"]
 
@@ -158,6 +190,43 @@ text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Completion_area_4" type="Area2D" parent="Env"]
+position = Vector2(-1307, 1506)
+script = ExtResource("5_lquwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Env/Completion_area_4"]
+position = Vector2(-106.5, 5)
+shape = SubResource("RectangleShape2D_w48qg")
+
+[node name="Text_area_4" type="Area2D" parent="Env"]
+position = Vector2(-1206, 1422)
+script = ExtResource("8_5vw27")
+
+[node name="Area" type="CollisionShape2D" parent="Env/Text_area_4"]
+position = Vector2(242, 30)
+shape = SubResource("RectangleShape2D_yaehf")
+
+[node name="Press_E" type="ColorRect" parent="Env/Text_area_4/Area"]
+visible = false
+offset_left = -4.0
+offset_top = -47.0
+offset_right = 7.0
+offset_bottom = -27.0
+color = Color(0.29210714, 0.000585655, 0.7674996, 1)
+
+[node name="Label" type="Label" parent="Env/Text_area_4/Area/Press_E"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.5
+offset_bottom = 1.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Darkness" type="CanvasModulate" parent="."]
 color = Color(0.48962224, 0.48962224, 0.48962218, 1)
 
@@ -196,6 +265,10 @@ text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="child_area_4" type="Sprite2D" parent="."]
+position = Vector2(-968, 1493)
+texture = SubResource("AtlasTexture_2cqfq")
+
 [node name="leBox" type="CharacterBody2D" parent="."]
 position = Vector2(1027, -720)
 script = ExtResource("8_4c57u")
@@ -210,6 +283,24 @@ position = Vector2(2.0000634, -2.5004148e-05)
 scale = Vector2(0.30508578, 0.3050844)
 texture = ExtResource("10_dg77c")
 
+[node name="WallPusher" type="CharacterBody2D" parent="."]
+position = Vector2(-1294, 1512)
+script = ExtResource("12_ycdy4")
+
+[node name="Sprite2D" type="Sprite2D" parent="WallPusher"]
+material = SubResource("ShaderMaterial_w48qg")
+position = Vector2(2, -3)
+scale = Vector2(0.36547104, 0.18421012)
+texture = ExtResource("13_w48qg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallPusher"]
+position = Vector2(-30, -3)
+shape = SubResource("RectangleShape2D_vivmo")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WallPusher"]
+position = Vector2(9.5, 4)
+shape = SubResource("RectangleShape2D_2cqfq")
+
 [connection signal="body_entered" from="Env/Text_area_1" to="Env/Text_area_1" method="_on_body_entered"]
 [connection signal="body_entered" from="Env/Text_area_1" to="Env/Text_area_1" method="set_num" binds= [1]]
 [connection signal="body_exited" from="Env/Text_area_1" to="Env/Text_area_1" method="_on_body_exited"]
@@ -221,6 +312,11 @@ texture = ExtResource("10_dg77c")
 [connection signal="body_entered" from="Env/Text_area_3" to="Env/Text_area_3" method="_on_body_entered"]
 [connection signal="body_entered" from="Env/Text_area_3" to="Env/Text_area_3" method="set_num" binds= [3]]
 [connection signal="body_exited" from="Env/Text_area_3" to="Env/Text_area_3" method="_on_body_exited"]
+[connection signal="body_entered" from="Env/Completion_area_4" to="Env/Completion_area_4" method="_on_body_entered"]
+[connection signal="body_exited" from="Env/Completion_area_4" to="Env/Completion_area_4" method="_on_body_exited"]
+[connection signal="body_entered" from="Env/Text_area_4" to="Env/Text_area_4" method="_on_body_entered"]
+[connection signal="body_entered" from="Env/Text_area_4" to="Env/Text_area_4" method="set_num" binds= [4]]
+[connection signal="body_exited" from="Env/Text_area_4" to="Env/Text_area_4" method="_on_body_exited"]
 [connection signal="body_entered" from="Gate_text_area_0" to="Gate_text_area_0" method="_on_body_entered"]
 [connection signal="body_entered" from="Gate_text_area_0" to="Gate_text_area_0" method="set_num" binds= [0]]
 [connection signal="body_exited" from="Gate_text_area_0" to="Gate_text_area_0" method="_on_body_exited"]

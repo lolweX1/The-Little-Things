@@ -1,7 +1,7 @@
 extends Node
 
 # level
-var level = 0
+var level = 1
 var old_level = 0
 
 # willpower
